@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal English Expressions: "Dodgy"</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0A192F;
+            color: #E2E8F0;
+        }
+        .gradient-text-title {
+            background: linear-gradient(90deg, #FF3300, #FFFFCC, #00CCCC, #FF00FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .lesson-card {
+            background-color: #112240;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .situation-card {
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .situation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+        }
+        .situation-card .details {
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+            margin-top: 0;
+        }
+        .situation-card.open .details {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+        .quiz-option {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .quiz-option:hover {
+            background-color: #334155;
+            border-color: #475569;
+        }
+        .quiz-option.correct {
+            background-color: #10B981;
+            border-color: #059669;
+        }
+        .quiz-option.incorrect {
+            background-color: #EF4444;
+            border-color: #DC2626;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-4xl mx-auto space-y-12">
+        
+        <div class="text-right">
+            <button id="language-button" class="px-4 py-2 text-sm font-semibold text-white bg-sky-600 rounded-full shadow-lg hover:bg-sky-700 transition-colors duration-300">
+                Mudar para Português
+            </button>
+        </div>
+
+        <!-- English Content -->
+        <div id="english-content">
+            <header class="text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold">
+                    <span class="gradient-text-title">"Dodgy"</span>
+                </h1>
+                <p class="mt-2 text-lg text-slate-400">Understanding this very useful informal adjective.</p>
+                <p class="text-sm text-slate-500">by Daby</p>
+            </header>
+
+            <main class="space-y-12">
+                <section class="lesson-card">
+                    <h2 class="text-2xl font-bold text-sky-400 mb-4">Literal vs. Real Meaning</h2>
+                    <p class="text-slate-300">
+                        **"Dodgy"** is an informal adjective with several meanings, all of which suggest something is not quite right. It's used to describe something or someone as unreliable, suspicious, of low quality, or potentially dangerous.
+                    </p>
+                    <p class="text-slate-300 mt-4">
+                        Think of it as the go-to word when you get a bad feeling about a person, a place, a product, or a situation.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-center mb-6">Real-Life Situations <span class="text-base font-normal text-slate-400">(Click to reveal the meaning)</span></h2>
+                    <div id="situations-container-en" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Situation cards will be inserted here by JavaScript -->
+                    </div>
+                </section>
+
+                <section class="lesson-card">
+                    <h2 class="text-2xl font-bold text-sky-400 mb-4">How Would a Brazilian Say This?</h2>
+                    <p class="text-slate-300">
+                        In Brazil, we don't have a single word that perfectly translates "dodgy." Instead, we use a few different expressions depending on the context.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 space-y-2 text-slate-300">
+                        <li>
+                            <strong class="text-amber-300">"Suspeito" / "Meio estranho"</strong>: Used for people or situations that seem unreliable or untrustworthy.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"Meio duvidoso" / "Não é de confiança"</strong>: Used for products or services that seem to be of poor quality or risky.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"Perigoso" / "Mal-assombrado"</strong>: Used for a place or a person who could be risky or dangerous.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"Bizarro"</strong>: A good way to describe something that feels odd, out of place, or not quite right.
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="quiz-container-en" class="lesson-card">
+                    <h2 class="text-2xl font-bold text-center text-sky-400">Test Your Knowledge! 🧐</h2>
+                    <div id="quiz-question-en" class="mt-6"></div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Portuguese Content -->
+        <div id="portuguese-content" class="hidden">
+            <header class="text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold">
+                    <span class="gradient-text-title">"Dodgy"</span>
+                </h1>
+                <p class="mt-2 text-lg text-slate-400">Entendendo este adjetivo informal e muito útil.</p>
+                <p class="text-sm text-slate-500">por Daby</p>
+            </header>
+
+            <main class="space-y-12">
+                <section class="lesson-card">
+                    <h2 class="text-2xl font-bold text-sky-400 mb-4">Significado Literal vs. Real</h2>
+                    <p class="text-slate-300">
+                        A palavra **"dodgy"** é um adjetivo informal com vários significados, todos sugerindo que algo não está certo. É usada para descrever algo ou alguém como não confiável, suspeito, de má qualidade ou potencialmente perigoso.
+                    </p>
+                    <p class="text-slate-300 mt-4">
+                        Pense nela como a palavra para usar quando você tem uma sensação ruim sobre uma pessoa, um lugar, um produto ou uma situação.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-center mb-6">Situações Reais <span class="text-base font-normal text-slate-400">(Clique para revelar o significado)</span></h2>
+                    <div id="situations-container-pt" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Situation cards will be inserted here by JavaScript -->
+                    </div>
+                </section>
+                
+                <section class="lesson-card">
+                    <h2 class="text-2xl font-bold text-sky-400 mb-4">Como um brasileiro diria isso?</h2>
+                    <p class="text-slate-300">
+                        No Brasil, não temos uma única palavra que traduza perfeitamente "dodgy". Em vez disso, usamos algumas expressões diferentes dependendo do contexto.
+                    </p>
+                    <ul class="list-disc list-inside mt-4 space-y-2 text-slate-300">
+                        <li>
+                            <strong class="text-amber-300">"Suspeito" / "Meio estranho"</strong>: Usado para pessoas ou situações que parecem não ser confiáveis.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"Meio duvidoso" / "Não é de confiança"</strong>: Usado para produtos ou serviços que parecem ser de má qualidade ou arriscados.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"Perigoso" / "Mal-assombrado"</strong>: Usado para um lugar ou uma pessoa que poderia ser arriscada ou perigosa.
+                        </li>
+                        <li>
+                            <strong class="text-amber-300">"Bizarro"</strong>: Uma boa maneira de descrever algo que parece esquisito, fora do lugar ou não muito certo.
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="quiz-container-pt" class="lesson-card">
+                    <h2 class="text-2xl font-bold text-center text-sky-400">Teste seu Conhecimento! 🧐</h2>
+                    <div id="quiz-question-pt" class="mt-6"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const situationsData = [
+                {
+                    situation_en: "A mechanic gives a very low price.",
+                    situation_pt: "Um mecânico dá um preço muito baixo.",
+                    real_meaning_en: "The deal seems too good to be true, making it feel suspicious or unreliable.",
+                    real_meaning_pt: "O acordo parece bom demais para ser verdade, o que o torna suspeito ou não confiável.",
+                    example_en: "I don't trust him. The price he quoted for the repair seems a bit dodgy.",
+                    example_pt: "Não confio nele. O preço que ele orçou para o conserto parece meio duvidoso.",
+                },
+                {
+                    situation_en: "An internet purchase from a new website.",
+                    situation_pt: "Uma compra na internet em um site novo.",
+                    real_meaning_en: "The website is unfamiliar and may not be trustworthy. It feels risky.",
+                    real_meaning_pt: "O site não é familiar e pode não ser confiável. Parece arriscado.",
+                    example_en: "I'm not going to buy from that store. The website looks a bit dodgy.",
+                    example_pt: "Não vou comprar nessa loja. O site parece meio suspeito.",
+                },
+                {
+                    situation_en: "Getting food poisoning from a restaurant.",
+                    situation_pt: "Ter uma intoxicação alimentar em um restaurante.",
+                    real_meaning_en: "The quality of the food or the hygiene of the place is questionable.",
+                    real_meaning_pt: "A qualidade da comida ou a higiene do lugar é questionável.",
+                    example_en: "I got sick after eating at that restaurant. The food was a bit dodgy.",
+                    example_pt: "Fiquei doente depois de comer naquele restaurante. A comida era meio duvidosa.",
+                },
+                {
+                    situation_en: "A dark alley at night.",
+                    situation_pt: "Uma rua escura à noite.",
+                    real_meaning_en: "The place feels unsafe, risky, and possibly dangerous.",
+                    real_meaning_pt: "O lugar parece inseguro, arriscado e possivelmente perigoso.",
+                    example_en: "Let's take another route; that alley looks a bit dodgy.",
+                    example_pt: "Vamos por outra rota; aquela rua parece meio perigosa.",
+                },
+                {
+                    situation_en: "A person selling something on a street corner.",
+                    situation_pt: "Uma pessoa vendendo algo na esquina.",
+                    real_meaning_en: "The seller and the products seem untrustworthy or fake.",
+                    real_meaning_pt: "O vendedor e os produtos parecem não ser confiáveis ou falsos.",
+                    example_en: "I wouldn't buy a watch from that guy. He seems a bit dodgy.",
+                    example_pt: "Eu não compraria um relógio desse cara. Ele parece meio suspeito.",
+                },
+            ];
+
+            const quizData = [
+                {
+                    situation_pt: "Você recebe uma mensagem de texto de um número desconhecido pedindo seus dados bancários.",
+                    options_pt: ["Isso é uma ótima oportunidade.", "Obrigado, vou verificar.", "Isso parece meio suspeito."],
+                    answer_pt: "Isso parece meio suspeito.",
+                    situation_en: "You get a text message from an unknown number asking for your bank details.",
+                    options_en: ["This is a great opportunity.", "Thanks, I'll check it out.", "This seems a bit dodgy."],
+                    answer_en: "This seems a bit dodgy."
+                },
+                {
+                    situation_pt: "Um amigo te convida para um evento em um prédio abandonado.",
+                    options_pt: ["Parece divertido!", "Que legal, vamos!", "Acho que é meio perigoso."],
+                    answer_pt: "Acho que é meio perigoso.",
+                    situation_en: "A friend invites you to an event at an abandoned building.",
+                    options_en: ["Sounds like fun!", "Cool, let's go!", "I think that's a bit dodgy."],
+                    answer_en: "I think that's a bit dodgy."
+                },
+                {
+                    situation_pt: "Um amigo te oferece um relógio de marca por um preço muito baixo.",
+                    options_pt: ["É um ótimo preço!", "Vamos lá, comprei o meu por 10 vezes mais.", "O relógio parece meio duvidoso."],
+                    answer_pt: "O relógio parece meio duvidoso.",
+                    situation_en: "A friend offers you a brand-name watch for a very low price.",
+                    options_en: ["That's a great price!", "Come on, I bought mine for 10 times more.", "The watch looks a bit dodgy."],
+                    answer_en: "The watch looks a bit dodgy."
+                }
+            ];
+
+            let currentQuestionIndex = 0;
+            let score = 0;
+            let isQuizCompleted = false;
+
+            function createSituationCard(data, lang) {
+                const isPt = lang === 'pt';
+                const situation = isPt ? data.situation_pt : data.situation_en;
+                const realMeaning = isPt ? data.real_meaning_pt : data.real_meaning_en;
+                const example = isPt ? data.example_pt : data.example_en;
+
+                return `
+                    <div class="lesson-card situation-card">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold text-amber-300">${situation}</h3>
+                            <span class="text-3xl">🤔</span>
+                        </div>
+                        <div class="details">
+                            <p class="text-slate-300"><strong>${isPt ? "Significado real:" : "Real meaning:"}</strong> ${realMeaning}</p>
+                            <p class="mt-4 italic text-slate-400">
+                                <strong class="text-sky-400">${isPt ? "Exemplo:" : "Example:"}</strong> "${example}"
+                            </p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            function renderSituations() {
+                const containerEn = document.getElementById('situations-container-en');
+                const containerPt = document.getElementById('situations-container-pt');
+                
+                containerEn.innerHTML = situationsData.map(d => createSituationCard(d, 'en')).join('');
+                containerPt.innerHTML = situationsData.map(d => createSituationCard(d, 'pt')).join('');
+
+                document.querySelectorAll('.situation-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        card.classList.toggle('open');
+                    });
+                });
+            }
+
+            function renderQuiz(lang) {
+                const isPt = lang === 'pt';
+                const quizContainer = document.getElementById(isPt ? 'quiz-question-pt' : 'quiz-question-en');
+                
+                if (currentQuestionIndex >= quizData.length) {
+                    quizContainer.innerHTML = `
+                        <h2 class="text-2xl font-bold text-center text-sky-400">${isPt ? "Quiz Finalizado!" : "Quiz Complete!"}</h2>
+                        <p class="text-center text-lg mt-4 text-slate-300">${isPt ? "Sua pontuação:" : "Your score:"} ${score} / ${quizData.length}</p>
+                        <div class="text-center mt-6">
+                            <button id="restart-quiz-${lang}" class="px-6 py-2 bg-amber-500 text-white font-semibold rounded-full hover:bg-amber-600 transition-colors">
+                                ${isPt ? "Recomeçar" : "Restart"}
+                            </button>
+                        </div>
+                    `;
+                    document.getElementById(`restart-quiz-${lang}`).addEventListener('click', () => {
+                        currentQuestionIndex = 0;
+                        score = 0;
+                        isQuizCompleted = false;
+                        renderQuiz(lang);
+                    });
+                    return;
+                }
+                
+                const question = quizData[currentQuestionIndex];
+                const situation = isPt ? question.situation_pt : question.situation_en;
+                const options = isPt ? question.options_pt : question.options_en;
+                const answer = isPt ? question.answer_pt : question.answer_en;
+
+                const optionsHtml = options.map(option => `
+                    <button class="quiz-option w-full text-left p-4 rounded-lg font-semibold" data-answer="${option}">${option}</button>
+                `).join('');
+
+                quizContainer.innerHTML = `
+                    <p class="text-lg font-medium text-slate-300 mb-4">${isPt ? "Situação:" : "Situation:"} ${situation}</p>
+                    <div class="space-y-3" id="options-container-${lang}">
+                        ${optionsHtml}
+                    </div>
+                    <div id="feedback-${lang}" class="mt-4 text-center font-bold"></div>
+                `;
+
+                document.querySelectorAll(`#options-container-${lang} .quiz-option`).forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        if(isQuizCompleted) return;
+                        const selectedAnswer = e.target.dataset.answer;
+                        const feedbackEl = document.getElementById(`feedback-${lang}`);
+                        
+                        document.querySelectorAll(`#options-container-${lang} .quiz-option`).forEach(btn => {
+                            btn.disabled = true;
+                        });
+
+                        if (selectedAnswer === answer) {
+                            e.target.classList.add('correct');
+                            feedbackEl.textContent = isPt ? 'Correto! 🎉' : 'Correct! 🎉';
+                            feedbackEl.className = 'mt-4 text-center font-bold text-green-400';
+                            score++;
+                        } else {
+                            e.target.classList.add('incorrect');
+                            feedbackEl.textContent = `${isPt ? 'Incorreto. A resposta certa é:' : 'Incorrect. The right answer is:'} ${answer}`;
+                            feedbackEl.className = 'mt-4 text-center font-bold text-red-400';
+                            document.querySelector(`#options-container-${lang} .quiz-option[data-answer="${answer}"]`).classList.add('correct');
+                        }
+                        
+                        setTimeout(() => {
+                            currentQuestionIndex++;
+                            renderQuiz(lang);
+                        }, 2000);
+                    });
+                });
+            }
+
+            const portugueseContent = document.getElementById('portuguese-content');
+            const englishContent = document.getElementById('english-content');
+            const languageButton = document.getElementById('language-button');
+
+            languageButton.addEventListener('click', () => {
+                const isEnglishVisible = !englishContent.classList.contains('hidden');
+                englishContent.classList.toggle('hidden', isEnglishVisible);
+                portugueseContent.classList.toggle('hidden', !isEnglishVisible);
+                languageButton.textContent = isEnglishVisible ? 'Switch to English' : 'Mudar para Português';
+            });
+            
+            renderSituations();
+            renderQuiz('en');
+            renderQuiz('pt');
+        });
+    </script>
+</body>
+</html>
